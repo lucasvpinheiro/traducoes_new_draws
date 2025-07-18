@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regentes da Nova Era - King e Diane</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100" fill="rgba(255,215,0,0.1)"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .hero-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .scroll-box {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            line-height: 1.6;
+        }
+        
+        .scroll-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scroll-box::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .scroll-box::-webkit-scrollbar-thumb {
+            background: #ffd700;
+            border-radius: 4px;
+        }
+        
+        .scroll-box p {
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .emphasize {
+            font-style: italic;
+            color: #ff8c00;
+        }
+        
+        .skill-section {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .skill-title {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .skill-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero-image::before {
+            content: "Imagem do Herói";
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+        
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,215,0,0.2)" stroke-width="2"/></svg>');
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+        
+        .zoom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .zoom-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .zoomed-image {
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .zoom-overlay.active .zoomed-image {
+            transform: scale(1);
+        }
+        
+        .close-zoom {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-zoom:hover {
+            color: #ffd700;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+        
+        .github-info {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .github-info h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .github-info ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .github-info li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .github-info li:before {
+            content: "•";
+            color: #ffd700;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay para zoom de imagens -->
+    <div class="zoom-overlay" id="zoomOverlay">
+        <i class="fas fa-times close-zoom" id="closeZoom"></i>
+        <img src="" alt="Zoomed Image" class="zoomed-image" id="zoomedImage">
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="floating">Regentes da Nova Era</h1>
+            <h2>King e Diane</h2>
+            <div class="subtitle">Guardiães da Terra e da Floresta</div>
+        </header>
+
+        <div class="hero-container">
+            <div class="hero-card pulse">
+                <div class="hero-image" id="kingImage"></div>
+                <h3 class="card-title">King - O Rei das Fadas</h3>
+                <div class="scroll-box">
+                    <p>Aumenta os atributos básicos de possível a participar da batalha em <span class="highlight">15%</span> por cada herói, aumentando todos os atributos da dupla de heróis em:</p>
+                    <p class="emphasize">Alfados possíveis: Fadas, Gigantes, Rever Deádi/ Sinai.</p>
+                    <p>No início da rodada dos aliados, foi da Terra é aplicada em inimigos que não possuem ler as Terras.</p>
+                    <p class="emphasize">Na do herói acumula até ao lado do dano recebido pelíquico.</p>
+                    <p>No início da batalha, o padrão da Rainha dos Gigantes é aplicada à dupla de heróis e Supriani? Danô Recebido é aplicado à rádio possíveis por 1 rotulante.</p>
+                    <p class="emphasize">Proteção da Rainha dos Gigantes: atributos de pleno limite da Perúpia.</p>
+                    <p class="emphasize">Supriani: Darío Recebido: dano recebido da habilidade, inimigos não excedentes aos PV Métimos.</p>
+                    <p>Sempre que um inimigo atinge o valor máximo</p>
+                </div>
+            </div>
+            
+            <div class="hero-card pulse">
+                <div class="hero-image" id="dianeImage"></div>
+                <h3 class="card-title">Diane - A Rainha dos Gigantes</h3>
+                <div class="scroll-box">
+                    <p>Aumenta os atributos básicos de possível a participar da batalha em <span class="highlight">15%</span> por cada herói, aumentando todos os atributos da dupla de heróis em:</p>
+                    <p class="emphasize">Alfados possíveis: Fadas, Gigantes, Rever Deádi/ Sinai.</p>
+                    <p>No início da rodada dos aliados, foi da Terra é aplicada em inimigos que não possuem ler as Terras.</p>
+                    <p class="emphasize">Na do herói acumula até ao lado do dano recebido pelíquico.</p>
+                    <p>No início da batalha, o padrão da Rainha dos Gigantes é aplicada à dupla de heróis e Supriani? Danô Recebido é aplicado à rádio possíveis por 1 rotulante.</p>
+                    <p class="emphasize">Proteção da Rainha dos Gigantes: atributos de pleno limite da Perúpia.</p>
+                    <p class="emphasize">Supriani: Darío Recebido: dano recebido da habilidade, inimigos não excedentes aos PV Métimos.</p>
+                    <p>Sempre que um inimigo atinge o valor máximo</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <h3 class="skill-title">União Perfeita</h3>
+            <div class="scroll-box">
+                <p>Causa dano de Montanha Colossal equivalente a <span class="highlight">50m²</span> do Ataque em um inimigo.</p>
+                <p>Recifros Contadores de Movimento Definitivo de inimigos em <span class="highlight">10m²</span> se a dupla de heróis tem <span class="highlight">1 m²</span> ou mais.</p>
+                <p>Montanha Colossal: <span class="highlight">2 de Aumento da Taxa de Perúpia</span>.</p>
+                <p>Causa dano adicional equivalente a <span class="highlight">40m²</span> dos PV restantes do herói.</p>
+                <p>Aplica Petrificar ao alvo por <span class="highlight">30m²</span> ao usar defeito de fra do Rei das Fadas para causar dano.</p>
+            </div>
+        </div>
+
+        <div class="skill-section">
+            <h3 class="skill-title">Lança Espiritual Charlefo! Verdadeira, Oitava Forma: “Jardim de Póler”</h3>
+            <div class="scroll-box">
+                <p>Aplica defeitos de fra do Rei das Fadas na dupla de heróis, remover os debutifidos aliados no equivalente ao número de aliados sobre o ventre, depois cura aliados por <span class="highlight">20m²</span> do Ataque da dupla de heróis.</p>
+                <p class="emphasize">(Recargar 1 rotulante)</p>
+            </div>
+        </div>
+
+        <div class="github-info">
+            <h3><i class="fab fa-github"></i> Hospedagem no GitHub Pages</h3>
+            <ul>
+                <li>Crie um repositório no GitHub com o nome do seu projeto</li>
+                <li>Adicione seus arquivos HTML, CSS, JS e imagens</li>
+                <li>Organize as imagens em uma pasta chamada "images"</li>
+                <li>Vá nas configurações do repositório > Pages</li>
+                <li>Selecione a branch principal (main/master) e a pasta raiz</li>
+                <li>Seu site estará disponível em: <em>https://seu-usuario.github.io/nome-do-repositorio</em></li>
+                <li>Para usar imagens: <code>&lt;img src="images/nome-da-imagem.jpg"&gt;</code></li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>Regentes da Nova Era - King e Diane | Atualizado em: 18 de Julho de 2025</p>
+            <p>© 2025 Sistema de Habilidades de Heróis</p>
+        </footer>
+    </div>
+
+    <script>
+        // Adiciona funcionalidade de zoom nas imagens
+        document.querySelectorAll('.hero-image').forEach(image => {
+            image.addEventListener('click', function() {
+                const overlay = document.getElementById('zoomOverlay');
+                const zoomedImg = document.getElementById('zoomedImage');
+                
+                // Em um cenário real, aqui você carregaria a imagem real
+                zoomedImg.src = 'https://via.placeholder.com/800x600/2c3e50/ffffff?text=Imagem+Ampliada+do+Heroi';
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Fecha o zoom
+        document.getElementById('closeZoom').addEventListener('click', function() {
+            document.getElementById('zoomOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Fecha o zoom ao clicar no overlay
+        document.getElementById('zoomOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Adiciona efeito de pulsação periódica nos cards
+        setInterval(() => {
+            document.querySelectorAll('.hero-card').forEach(card => {
+                card.classList.toggle('pulse');
+            });
+        }, 4000);
+    </script>
+</body>
+</html>
