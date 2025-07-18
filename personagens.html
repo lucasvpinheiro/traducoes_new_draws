@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagens | Traduções</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f1a3d, #2a0845, #0f1a3d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header e Navegação */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            border: 2px solid #7e4bff;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #7e4bff;
+            animation: pulse 2s infinite;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #7e4bff, #b84dff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(126, 75, 255, 0.5);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover, nav a.active {
+            background: linear-gradient(90deg, #7e4bff, #b84dff);
+            box-shadow: 0 0 15px rgba(126, 75, 255, 0.7);
+        }
+        
+        /* Seção de Personagens */
+        .characters-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #b84dff;
+            text-shadow: 0 0 10px rgba(184, 77, 255, 0.5);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #7e4bff, transparent);
+        }
+        
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .character-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #7e4bff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(126, 75, 255, 0.4);
+        }
+        
+        .character-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .character-image::before {
+            content: "Imagem do Personagem";
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+        }
+        
+        .character-info {
+            padding: 20px;
+        }
+        
+        .character-name {
+            font-size: 1.5rem;
+            color: #b84dff;
+            margin-bottom: 10px;
+        }
+        
+        .character-game {
+            color: #7e4bff;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .character-description {
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .character-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: rgba(126, 75, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid #7e4bff;
+        }
+        
+        .character-link:hover {
+            background: linear-gradient(90deg, #7e4bff, #b84dff);
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            border: 2px solid #7e4bff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            color: #7e4bff;
+            margin-bottom: 20px;
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        .copyright {
+            font-size: 1rem;
+            margin-top: 20px;
+            color: #aaa;
+        }
+        
+        /* Animações */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Efeito de Partículas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(126, 75, 255, 0.7);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.5;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) translateX(calc(100vw * var(--x)));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeito de partículas -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <!-- Cabeçalho com navegação -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="logo-text">Traduções</div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="personagens.html" class="active">Personagens</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Seção de Personagens -->
+        <div class="characters-section">
+            <h2 class="section-title">Personagens Traduzidos</h2>
+            
+            <div class="characters-grid">
+                <!-- Personagem 1 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">King & Diane</h3>
+                        <div class="character-game">[Regentes da Nova Era]</div>
+                        <p class="character-description">
+                            Guardiões da Terra e da Floresta. Dupla poderosa com habilidades de suporte e dano em área.
+                        </p>
+                        <a href="king-diane.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 2 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Arthur Pendragon</h3>
+                        <div class="character-game">Cavaleiro do Reino</div>
+                        <p class="character-description">
+                            Lendário rei com habilidades de liderança e combate corpo a corpo.
+                        </p>
+                        <a href="arthur.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 3 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Merlin</h3>
+                        <div class="character-game">Mago Supremo</div>
+                        <p class="character-description">
+                            Mago com habilidades de controle e dano mágico massivo.
+                        </p>
+                        <a href="merlin.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 4 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Escanor</h3>
+                        <div class="character-game">O Orgulho dos Leões</div>
+                        <p class="character-description">
+                            Guerreiro solar com força que varia de acordo com a hora do dia.
+                        </p>
+                        <a href="escanor.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 5 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Gowther</h3>
+                        <div class="character-game">Pecado da Luxúria</div>
+                        <p class="character-description">
+                            Boneco autômato com habilidades de manipulação mental e memória.
+                        </p>
+                        <a href="gowther.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 6 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Ban</h3>
+                        <div class="character-game">Pecado da Ganância</div>
+                        <p class="character-description">
+                            Imortal com habilidades de roubo e regeneração.
+                        </p>
+                        <a href="ban.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 7 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Meliodas</h3>
+                        <div class="character-game">Pecado da Ira</div>
+                        <p class="character-description">
+                            Ex-líder dos Dez Mandamentos com poderes demoníacos.
+                        </p>
+                        <a href="meliodas.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+                
+                <!-- Personagem 8 -->
+                <div class="character-card">
+                    <div class="character-image"></div>
+                    <div class="character-info">
+                        <h3 class="character-name">Elizabeth</h3>
+                        <div class="character-game">Pecado da Serpente</div>
+                        <p class="character-description">
+                            Princesa com habilidades de cura e proteção divina.
+                        </p>
+                        <a href="elizabeth.html" class="character-link">Ver Tradução</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+        <footer>
+            <div class="footer-logo">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/seu_perfil" class="social-icon" title="Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/seu_perfil" class="social-icon" title="Facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://github.com/seu_usuario" class="social-icon" title="GitHub" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:seuemail@exemplo.com" class="social-icon" title="Contato">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                © 2023 Tradutor de Habilidades. Todos os direitos reservados.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Criar partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posição aleatória
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '100vh';
+                
+                // Tamanho aleatório
+                const size = Math.random() * 5 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Cor aleatória
+                const hue = 260 + Math.random() * 20;
+                particle.style.backgroundColor = `hsla(${hue}, 100%, 70%, ${Math.random() * 0.5 + 0.3})`;
+                
+                // Duração e direção aleatórias
+                particle.style.setProperty('--x', Math.random() * 2 - 1);
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Iniciar quando a página carregar
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>
